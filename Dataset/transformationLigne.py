@@ -10,7 +10,7 @@ for ligne in source:
 		destination.write(output+"\n")
 		output = ""
                 token2 = ""
-        else:        
+        elif ligne.split("\t")[0]=="NN" or ligne.split("\t")[0]=="JJ" or  ligne.split("\t")[0][:2]=="VV":               
        	        output = output + " "+ token2
 	
         
