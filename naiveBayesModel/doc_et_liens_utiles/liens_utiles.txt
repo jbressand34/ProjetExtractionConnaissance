@@ -1,0 +1,9 @@
+
+Comment rendre l'ensemble des données de test et l'ensemble des données d'entrainement compatibles?
+Description du problème : après création du modele qui se base sur des données d'entrainement prétraités avec le filtre StringToWordVector, on souhaite appliquer ce modèle sur des données nouvelles afin de faire de la prédiction.
+Pour appliquer le modèle sur ces nouvelles données, il faut que ces nouvelles données soient au même format que les données d'entrainement sur lesquelles s'est entrainé le modèle.
+Pour expliquer plus concrètement, le fichier arff qui contient les nouvelles données doit posséder les mêmes types et noms d'attributs dans le même ordre que le fichier arff sur lequel on a entrainé le model.
+Or le fichier arff d'entrainement contient les attributs créés par le filtre StringToWordVector. Si on essaye d'appliquer le filtre StringToWordVector sur le fichier arff contenant les nouvelles données, StringToWordVector va créer des attributs qui ne seront pas les mêmes que ceux des données d'entrainement (quelques uns seront les mêmes mais pas dans le même ordre) car le texte des nouvelles données n'est pas le même que le texte des données d'entrainement.
+C'est ce problème qui est décrit sur le lien suivant :
+https://thekandyancode.wordpress.com/tag/training-and-test-set-are-not-compatible/
+La solution est d'utiliser StringToWordVector en mode batch (lui dire d'utiliser les mêmes attributs pour les données nouvelles que les données entrainement)
