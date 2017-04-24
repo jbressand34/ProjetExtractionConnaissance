@@ -63,7 +63,7 @@ if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	# -i <donnéesEntrainementInput> -o <donnéesEntrainementOutput> : Apllique StringToWordVector normalement
 	# -r <donnéesPrédictionInput> -s <donnéesPrédictionOutput> : Applique StringToWordVector en utilisant les attributs générés lors
 	#	de la précédente exécution avec -i <input> -o <output>
-	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -b -i dataForTesting/fichierUtilePourPretraitementDataTest.arff -o taoctraotrtoazxio.arff -r jskthclsitorsyutrtxsly.arff -s "+nomFichierSortie)
+	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -b -L -i dataForTesting/fichierUtilePourPretraitementDataTest.arff -o taoctraotrtoazxio.arff -r jskthclsitorsyutrtxsly.arff -s "+nomFichierSortie+ " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
 	print("Fichier "+nomFichierSortie+" créé")
 	os.system("rm taoctraotrtoazxio.arff")
 	
