@@ -1,4 +1,6 @@
-source = open("lemmes.txt","r")
+#Fichier tree-tagger: cat dataset.txt | tree-tagger-english > lemmesNew.txt
+
+source = open("lemmesNew.txt","r")
 destination = open("lemmesLignes.txt", "wt")
 output = ""
 compteur = 0
@@ -10,9 +12,13 @@ for ligne in source :
 		lemme = ligne.split("\t")[2].split("\n")[0]
 	#print motInit + " " + tag + " "+ lemme
 	if "ENDOFLINE" not in ligne:
-		if tag=="NN" and lemme!="<unknown>":
+		if lemme!="<unknown>":
 			if output != "":
-				output = output + " " + lemme
+				if tag =="CD":
+					lemme = motInit
+					output = output + " " + lemme
+				else:
+					output = output + " " + lemme	
 				#print output
 			else :
 				output = lemme

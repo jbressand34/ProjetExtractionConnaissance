@@ -24,12 +24,14 @@ if os.path.isfile(nomFichier):
 
 	#Quel nom donner à la sauvegarde du modele ?
 	nomModel = input("Quel nom de fichier voulez-vous donner au model ? (de la forme [a-zA-Z0-9_-]+\.model)\n")
+	classifieur = input("Quel classifieur voulez-vous utiliser pour votre modele ? \n Par exemple:\n weka.classifiers.bayes.NaiveBayes,\n weka.classifiers.functions.SMO,\n weka.classifiers.trees.J48,\n weka.classifiers.lazy.IBk \n")
+	#classifieur = input("Quel est le classifieur de ce model ? Par exemple weka.classifiers.bayes.NaiveBayes\n")
 	
 	#Si l nom termine par .model
 	if re.match(r"[a-zA-Z0-9_-]+\.model", nomModel):
 		nomModel = "models/"+nomModel
 		#creation entrainement et sauvegarde du modele et affichage des résultats de cross-validation
-		os.system("java weka.classifiers.bayes.NaiveBayes -t "+nomFichier+" -x 10 -c first -d "+nomModel)
+		os.system("java "+classifieur+" -t "+nomFichier+" -x 10 -c first -d "+nomModel)
 		print("Fichier "+nomModel+" créé")
 		print("done")
 	else:
