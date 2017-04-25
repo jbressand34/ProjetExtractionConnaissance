@@ -1,3 +1,4 @@
+
 """
 	Script de construction d'un modèle et d'entrainement
 	de ce modèle à partir des données prétraités.
