@@ -19,7 +19,8 @@ import os, re
 	Premiere partie :
 	Combinaison des fichier dataset.txt et labels.csv en un fichier csv
 """
-texte = open("dataForTraining/dataset.txt","r")
+fichier = input("Nom de fichier dataset: ")
+texte = open("dataForTraining/"+fichier,"r")
 labels = open("dataForTraining/labels.csv","r")
 combinaison = open("jskthclsitorsyutrtxsly.csv","w")
 
@@ -61,7 +62,7 @@ nomFichierSortie = input("Quel nom de fichier voulez-vous donner au fichier de s
 if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	nomFichierSortie = "dataForTrainingPreprocessed/"+nomFichierSortie
 	# J'applique le filtre StringToWordVector à mon fichier temporaire arff en input et j'écris dans le fichier que l'utilisateur m'a spécifié
-	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -L -i jskthclsitorsyutrtxsly.arff -o "+nomFichierSortie + " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
+	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -L -i jskthclsitorsyutrtxsly.arff -o "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
 	print("Fichier "+nomFichierSortie+" créé")
 else:
 	print("Le nom de fichier "+nomFichierSortie+"ne correspond pas à l'expression reguliere")
