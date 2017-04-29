@@ -1,6 +1,6 @@
 #Fichier tree-tagger: cat dataset.txt | tree-tagger-english > lemmesNew.txt
 
-source = open("lemmesNew.txt","r")
+source = open("../naiveBayesModel/dataForTraining/treeTagDatasetEOL.txt","r")
 destination = open("lemmesLignes.txt", "wt")
 output = ""
 compteur = 0
@@ -20,9 +20,17 @@ for ligne in source :
 				else:
 					output = output + " " + lemme	
 				#print output
+				
+
 			else :
 				output = lemme
 				#print output
+		else:
+			print ("mot: " + motInit)
+			
+			lemme = motInit
+			print ("mot: " + lemme)
+			output = output + " " + lemme
 	else:
 		destination.write(output+"\n")
 		output = ""
