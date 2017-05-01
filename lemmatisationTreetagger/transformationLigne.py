@@ -1,7 +1,7 @@
 #Fichier tree-tagger: cat dataset.txt | tree-tagger-english > lemmesNew.txt
 
-source = open("../naiveBayesModel/dataForTraining/treeTagDatasetEOL.txt","r")
-destination = open("lemmesLignes.txt", "wt")
+source = open("lemmesNew.txt","r")
+destination = open("lemmesDataset.txt", "wt")
 output = ""
 compteur = 0
 
@@ -12,25 +12,21 @@ for ligne in source :
 		lemme = ligne.split("\t")[2].split("\n")[0]
 	#print motInit + " " + tag + " "+ lemme
 	if "ENDOFLINE" not in ligne:
-		if lemme!="<unknown>":
-			if output != "":
-				if tag =="CD":
-					lemme = motInit
-					output = output + " " + lemme
-				else:
-					output = output + " " + lemme	
-				#print output
-				
-
-			else :
-				output = lemme
-				#print output
-		else:
-			print ("mot: " + motInit)
-			
-			lemme = motInit
-			print ("mot: " + lemme)
-			output = output + " " + lemme
+		if tag!="DT" and tag!="IN" and tag!="PP" and tag!="DT" and tag!="TO":#lemme!="<unknown>":
+			if lemme=="<unknown>":
+				lemme = motInit
+				output = output + " " + lemme
+			else:	
+				if output != "":
+					if tag =="CD":
+						lemme = motInit
+						output = output + " " + lemme
+					else:
+						output = output + " " + lemme	
+					#print output
+				else :
+					output = lemme
+					#print output
 	else:
 		destination.write(output+"\n")
 		output = ""
