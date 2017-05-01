@@ -1,5 +1,7 @@
 #Fichier tree-tagger: cat dataset.txt | tree-tagger-english > lemmesNew.txt
 
+import re
+
 source = open("lemmesNew.txt","r")
 destination = open("lemmesDataset.txt", "wt")
 output = ""
@@ -15,14 +17,24 @@ for ligne in source :
 		if tag!="DT" and tag!="IN" and tag!="PP" and tag!="DT" and tag!="TO":#lemme!="<unknown>":
 			if lemme=="<unknown>":
 				lemme = motInit
+				lemme = re.sub(r'[^a-zA-Z0-9]', r'', lemme)
 				output = output + " " + lemme
 			else:	
 				if output != "":
 					if tag =="CD":
-						lemme = motInit
+						if re.match("^([1-4]|[1-4][1-9]|20|30|40)$",motInit):
+							lemme = "negative"
+						elif re.match("^([6-9]|10|[5-9][1-9]|100|60|70|80|90)$",motInit):
+							lemme = "positive"
+						elif re.match("^(5|50)$",motInit):
+							lemme = "neutral"
+						else:
+							lemme = motInit
 						output = output + " " + lemme
 					else:
-						output = output + " " + lemme	
+						lemme = re.sub(r'[^a-zA-Z0-9]', r'', lemme)
+						if len(lemme) > 0:
+							output = output + " " + lemme	
 					#print output
 				else :
 					output = lemme
