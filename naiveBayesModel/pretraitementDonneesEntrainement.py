@@ -15,17 +15,20 @@
 
 import os, re
 
+
 """
 	Premiere partie :
 	Combinaison des fichier dataset.txt et labels.csv en un fichier csv
 """
+os.system("ls dataForTraining/")
 fichier = input("Nom de fichier dataset: ")
 texte = open("dataForTraining/"+fichier,"r")
-labels = open("dataForTraining/labels.csv","r")
+fichierLabels = input("Nom de fichier labels: ")
+labels = open("dataForTraining/"+fichierLabels,"r")
 combinaison = open("jskthclsitorsyutrtxsly.csv","w")
 
 #Je mets en tête du fichier une ligne contenant le nom des attributs 
-combinaison.write("texte,label\n")
+combinaison.write("texte,valeure\n")
 t = texte.readline().split("\n")[0]
 l = labels.readline()
 while t and l:
@@ -62,7 +65,8 @@ nomFichierSortie = input("Quel nom de fichier voulez-vous donner au fichier de s
 if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	nomFichierSortie = "dataForTrainingPreprocessed/"+nomFichierSortie
 	# J'applique le filtre StringToWordVector à mon fichier temporaire arff en input et j'écris dans le fichier que l'utilisateur m'a spécifié
-	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -L -i jskthclsitorsyutrtxsly.arff -o "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
+	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -W 100000 -L -i jskthclsitorsyutrtxsly.arff -o "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" -tokenizer \"weka.core.tokenizers.NGramTokenizer -max 3 -min 1 \"")
+
 	print("Fichier "+nomFichierSortie+" créé")
 else:
 	print("Le nom de fichier "+nomFichierSortie+"ne correspond pas à l'expression reguliere")
