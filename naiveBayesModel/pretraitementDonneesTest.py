@@ -18,12 +18,15 @@ import os,re
 	Premiere partie :
 	Combinaison des fichier dataset.txt et labels.csv en un fichier csv
 """
-texte = open("dataForTesting/dataset.txt","r")
-labels = open("dataForTesting/labels.csv","r")
+os.system("ls dataForTesting/")
+fichier = input("Nom de fichier dataset: ")
+texte = open("dataForTesting/"+fichier,"r")
+fichierLabels = input("Nom de fichier labels: ")
+labels = open("dataForTesting/"+fichierLabels,"r")
 combinaison = open("jskthclsitorsyutrtxsly.csv","w")
 
 #Je mets en tête du fichier une ligne contenant le nom des attributs 
-combinaison.write("texte,label\n")
+combinaison.write("texte,valeur\n")
 t = texte.readline().split("\n")[0]
 l = labels.readline()
 while t and l:
@@ -63,7 +66,8 @@ if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	# -i <donnéesEntrainementInput> -o <donnéesEntrainementOutput> : Apllique StringToWordVector normalement
 	# -r <donnéesPrédictionInput> -s <donnéesPrédictionOutput> : Applique StringToWordVector en utilisant les attributs générés lors
 	#	de la précédente exécution avec -i <input> -o <output>
-	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -b -L -i dataForTesting/fichierUtilePourPretraitementDataTest.arff -o taoctraotrtoazxio.arff -r jskthclsitorsyutrtxsly.arff -s "+nomFichierSortie+ " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
+	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -W 100000 -b -L -i dataForTesting/fichierUtilePourPretraitementDataTest.arff -o taoctraotrtoazxio.arff -r jskthclsitorsyutrtxsly.arff -s "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" -tokenizer \"weka.core.tokenizers.NGramTokenizer -max 3 -min 1 \"")
+	
 	print("Fichier "+nomFichierSortie+" créé")
 	os.system("rm taoctraotrtoazxio.arff")
 	

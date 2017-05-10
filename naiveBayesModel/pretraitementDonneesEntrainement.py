@@ -28,7 +28,7 @@ labels = open("dataForTraining/"+fichierLabels,"r")
 combinaison = open("jskthclsitorsyutrtxsly.csv","w")
 
 #Je mets en tête du fichier une ligne contenant le nom des attributs 
-combinaison.write("texte,valeure\n")
+combinaison.write("texte,valeur\n")
 t = texte.readline().split("\n")[0]
 l = labels.readline()
 while t and l:
@@ -66,7 +66,6 @@ if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	nomFichierSortie = "dataForTrainingPreprocessed/"+nomFichierSortie
 	# J'applique le filtre StringToWordVector à mon fichier temporaire arff en input et j'écris dans le fichier que l'utilisateur m'a spécifié
 	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -W 100000 -L -i jskthclsitorsyutrtxsly.arff -o "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" -tokenizer \"weka.core.tokenizers.NGramTokenizer -max 3 -min 1 \"")
-
 	print("Fichier "+nomFichierSortie+" créé")
 else:
 	print("Le nom de fichier "+nomFichierSortie+"ne correspond pas à l'expression reguliere")

@@ -30,7 +30,7 @@ if os.path.isfile(texte):
 	#On créé un fichier csv temporaire à partir du fichier texte contenant deux colonnes : texte et label, 
 	#la colonne label est remplie de '?' car les valeurs sont inconnus
 	csv = open("skjchgjkbgsmyfbcg.csv",'w')
-	csv.write("texte,label\n")
+	csv.write("texte,valeur\n")
 	for t in texte:
 		#Je dois mettre le texte entre guillement et enlever les virgules du texte
 		#car pour transformer en arff, weka veut que le texte soit entre guillemets dans le fichier csv
@@ -57,7 +57,7 @@ if os.path.isfile(texte):
 		# -i <donnéesEntrainementInput> -o <donnéesEntrainementOutput> : Apllique StringToWordVector normalement
 		# -r <donnéesPrédictionInput> -s <donnéesPrédictionOutput> : Applique StringToWordVector en utilisant les attributs générés lors
 		#	de la précédente exécution avec -i <input> -o <output>
-		os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -L -b -i dataForPrediction/fichierUtilePourPretraitementDataPrediction.arff -o taoctraotrtoazxio.arff -r skjchgjkbgsmyfbcg.arff -s "+nomFichierSortie+" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" ")
+		os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -W 100000 -L -b -i dataForPrediction/fichierUtilePourPretraitementDataPrediction.arff -o taoctraotrtoazxio.arff -r skjchgjkbgsmyfbcg.arff -s "+nomFichierSortie+" -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" -tokenizer \"weka.core.tokenizers.NGramTokenizer -max 3 -min 1 \"")
 		print("Fichier "+nomFichierSortie+" créé")
 		print("done")
 	else:
