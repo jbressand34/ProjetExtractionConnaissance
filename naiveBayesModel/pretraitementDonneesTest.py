@@ -24,7 +24,7 @@ texte = open("../naiveBayesModel/dataForTesting/lemmesDatasetTest.txt","r")
 os.system(" ls ../naiveBayesModel/dataForTesting")
 fichierLabels = input("\nChoisissez le fichier des labels:\n ")
 labels = open("../naiveBayesModel/dataForTesting/"+fichierLabels,"r")
-print("yes")
+print("\n")
 combinaison = open("jskthclsitorsyutrtxsly.csv","w")
 
 #Je mets en tête du fichier une ligne contenant le nom des attributs 
@@ -62,7 +62,7 @@ nomFichierSortie = input("Quel nom de fichier voulez-vous donner au fichier de s
 
 # Je fais un test avec une expression régulière pour verifier que le nom de fichier termine bien en .arff
 if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
-	print("super yes")
+	
 
 	nomFichierSortie = "../naiveBayesModel/dataForTestingPreprocessed/"+nomFichierSortie
 	#On applique les filtres de weka sur le fichier arff (par exemple StringToWordVector en mode batch -> voir docs_et_liens_utiles/liens_utiles.txt)
@@ -72,7 +72,7 @@ if re.match(r"[a-zA-Z0-9_-]+\.arff", nomFichierSortie):
 	#	de la précédente exécution avec -i <input> -o <output>
 	os.system("java -Xmx2048M weka.filters.unsupervised.attribute.StringToWordVector -W 100000 -b -L -i ../naiveBayesModel/dataForTesting/fichierUtilePourPretraitementDataTest.arff -o taoctraotrtoazxio.arff -r jskthclsitorsyutrtxsly.arff -s "+nomFichierSortie +  " -stopwords-handler \"weka.core.stopwords.WordsFromFile -stopwords stopwords.txt\" -tokenizer \"weka.core.tokenizers.NGramTokenizer -max 3 -min 1 \"")
 	
-	print("Fichier "+nomFichierSortie+" créé")
+	print("Fichier "+nomFichierSortie+" créé\n")
 	os.system("rm taoctraotrtoazxio.arff")
 	
 else:

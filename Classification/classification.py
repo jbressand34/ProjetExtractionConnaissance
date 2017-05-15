@@ -72,14 +72,34 @@ if (choix == "O"):
 choix = input("Voulez-vous faire une prédiction?[O/N]\n")
 
 if (choix == "O"):
+
+	
+	print("\n")
+	print("DATASETS disponibles pour les prediction:\n")
+	os.system("ls ../naiveBayesModel/dataForPrediction")
+	print("\n")
+	nomDataset = input("Choisissez le DATASET à traiter (de la forme [a-zA-Z0-9_-]+\.txt):\n")
+	if re.match(r"[a-zA-Z0-9_-]+\.txt", nomDataset):
+		nomDataset = "../naiveBayesModel/dataForPrediction/"+nomDataset
+
+	print("Traitements en cours...\n")	
+
+	os.system("cat "+nomDataset+" | cmd/tree-tagger-english > ./lemmesNewPrediction.txt")
+
+	print("TreeTagger terminé\nReconstitution du dataset lemmatisé...\n")
+	os.system("python3 ./transformationLignePrediction.py")
+	print("Done\n")
+
+
 	os.system("python3 ../naiveBayesModel/pretraitementDonneesPrediction.py")
 	print("Done\n")
 
 	print("Lancement de la classification...")
-	os.system("python3 ../naiveBayesModel/modelPediction.py")
+	os.system("python3 ../naiveBayesModel/modelPrediction.py")
 	print("Done\n")
+
 	print("Convertissement du résultat...")
-	os.system("python3 ../naiveBayesModel/transformResultIntoCSV.py")
+	os.system("python3 ../naiveBayesModel/transformResultsIntoCSV.py")
 	print("Done\n")
 
 

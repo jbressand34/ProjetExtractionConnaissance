@@ -6,7 +6,7 @@ output = ""
 compteur = 0
 
 for ligne in source :
-	print("allo")
+	
 	motInit = ligne.split("\t")[0]
 	if len(ligne.split("\t")) >2:
 		tag = ligne.split("\t")[1]

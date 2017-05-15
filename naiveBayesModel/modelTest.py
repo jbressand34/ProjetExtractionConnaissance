@@ -18,7 +18,7 @@ if os.path.isfile(modele):
 
 	#Récupération du nom du classifieur utilisé dans le modele.
 	#Je ne pense pas qu'on puisse récupérer le nom du classifieur autrement
-	classifieur = input("Quel est le classifieur de ce model ?\n Par exemple weka.classifiers.bayes.NaiveBayes\n")
+	classifieur = input("Quel est le classifieur de ce model ?\n Par exemple\n weka.classifiers.bayes.NaiveBayes\n")
 
 	#Récupération du nom du fichier de test
 	#/!\ les données de test doivent être au même format que les données

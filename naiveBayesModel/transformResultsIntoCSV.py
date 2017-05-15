@@ -1,24 +1,24 @@
 import os
 
-os.system("ls resultsPrediction")
+os.system("ls ../naiveBayesModel/resultsPrediction")
 resultsToTransform = input("Quel fichier de resultats voulez-vous transformer en csv ?\n")
 
-resultsToTransform = "resultsPrediction/"+resultsToTransform
+resultsToTransform = "../naiveBayesModel/resultsPrediction/"+resultsToTransform
 
 if os.path.isfile(resultsToTransform):
 	resultInput = open(resultsToTransform, "r")
 
-	os.system("ls dataForPrediction")
+	os.system("ls ../naiveBayesModel/dataForPrediction")
 	texte = input("Quel fichier contient les instances texte ?\n")
 
-	texte = "dataForPrediction/"+texte
+	texte = "../naiveBayesModel/dataForPrediction/"+texte
 
 	if os.path.isfile(texte):
 		texteInput = open(texte, "r")
 
 		nameOutput = input("Quel nom de fichier csv en sortie ?\n")
 
-		output = open("resultsPredictionCSV/"+nameOutput,"w")
+		output = open("../naiveBayesModel/resultsPredictionCSV/"+nameOutput,"w")
 
 		r = resultInput.readline()
 

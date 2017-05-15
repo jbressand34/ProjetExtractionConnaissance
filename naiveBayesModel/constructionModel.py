@@ -12,11 +12,11 @@
 """
 import os,re
 
-print("Fichiers de données :")
+print("Fichiers de données :\n")
 os.system("ls ../naiveBayesModel/dataForTrainingPreprocessed")
 #Quel fichier de données prétraitées utiliser pour l'entrainement
 nomFichier = input("Choisissez le fichier de sortie des pretraitements:\n")
-
+print("\n")
 
 
 nomFichier = "../naiveBayesModel/dataForTrainingPreprocessed/"+nomFichier
@@ -34,8 +34,8 @@ if os.path.isfile(nomFichier):
 		nomModel = "../naiveBayesModel/models/"+nomModel
 		#creation entrainement et sauvegarde du modele et affichage des résultats de cross-validation
 		os.system("java "+classifieur+" -t "+nomFichier+" -x 10 -c first -d "+nomModel)
-		print("Fichier "+nomModel+" créé")
-		print("done")
+		print("Fichier "+nomModel+" créé\n")
+		print("done\n")
 	else:
 		print("Le nom du modele "+nomModel+"ne correspond pas à l'expression reguliere")
 else:
