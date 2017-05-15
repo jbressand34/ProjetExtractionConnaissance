@@ -2,8 +2,8 @@
 
 import re
 
-source = open("lemmesNew.txt","r")
-destination = open("lemmesDataset.txt", "wt")
+source = open("../Classification/lemmesNew.txt","r")
+destination = open("../naiveBayesModel/dataForTraining/lemmesDataset.txt", "w")
 output = ""
 compteur = 0
 

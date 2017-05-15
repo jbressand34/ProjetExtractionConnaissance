@@ -13,11 +13,13 @@
 import os,re
 
 print("Fichiers de données :")
-os.system("ls dataForTrainingPreprocessed")
+os.system("ls ../naiveBayesModel/dataForTrainingPreprocessed")
 #Quel fichier de données prétraitées utiliser pour l'entrainement
-nomFichier = input("Quel fichier de données voulez-vous utiliser?\n")
+nomFichier = input("Choisissez le fichier de sortie des pretraitements:\n")
 
-nomFichier = "dataForTrainingPreprocessed/"+nomFichier
+
+
+nomFichier = "../naiveBayesModel/dataForTrainingPreprocessed/"+nomFichier
 
 #On verifie que le fichier existe bien
 if os.path.isfile(nomFichier):
@@ -29,7 +31,7 @@ if os.path.isfile(nomFichier):
 	
 	#Si l nom termine par .model
 	if re.match(r"[a-zA-Z0-9_-]+\.model", nomModel):
-		nomModel = "models/"+nomModel
+		nomModel = "../naiveBayesModel/models/"+nomModel
 		#creation entrainement et sauvegarde du modele et affichage des résultats de cross-validation
 		os.system("java "+classifieur+" -t "+nomFichier+" -x 10 -c first -d "+nomModel)
 		print("Fichier "+nomModel+" créé")

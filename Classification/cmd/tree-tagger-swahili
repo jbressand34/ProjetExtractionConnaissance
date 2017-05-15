@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN=/home/meryll/git/ProjetExtractionConnaissance/Classification/bin
+CMD=/home/meryll/git/ProjetExtractionConnaissance/Classification/cmd
+LIB=/home/meryll/git/ProjetExtractionConnaissance/Classification/lib
+
+OPTIONS="-token -lemma -sgml"
+
+TAGGER=${BIN}/tree-tagger
+TOKENIZER=${CMD}/tokenize.pl
+ABBR_LIST=${LIB}/swahili-abbreviations
+PARFILE=${LIB}/swahili.par
+
+$TOKENIZER -a $ABBR_LIST $* |
+$TAGGER $OPTIONS $PARFILE

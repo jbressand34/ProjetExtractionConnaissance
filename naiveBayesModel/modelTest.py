@@ -7,28 +7,30 @@
 """
 import os
 
-print("Liste des modeles :")
-os.system("ls models")
+print("Liste des modeles :\n")
+os.system("ls ../naiveBayesModel/models")
 #Recupération du nom du fichier contenant le modele
-modele = input("Quel modele souhaiter vous utiliser?\n")
-modele = "models/"+modele
+modele = input("\nQuel modele souhaiter vous utiliser?\n")
+modele = "../naiveBayesModel/models/"+modele
 
 #Si le fichier du model existe
 if os.path.isfile(modele):
 
 	#Récupération du nom du classifieur utilisé dans le modele.
 	#Je ne pense pas qu'on puisse récupérer le nom du classifieur autrement
-	classifieur = input("Quel est le classifieur de ce model ? Par exemple weka.classifiers.bayes.NaiveBayes\n")
+	classifieur = input("Quel est le classifieur de ce model ?\n Par exemple weka.classifiers.bayes.NaiveBayes\n")
 
 	#Récupération du nom du fichier de test
 	#/!\ les données de test doivent être au même format que les données
 	# d'entrainement du model
-	print("Fichiers des données de test prétraitées :")
-	os.system("ls dataForTestingPreprocessed")
-	query = "Quel fichier contenant les données de test prétraitées voulez-vous utiliser ?\n"
-	query += "/!\\ Les données doivent être au même format que celles utilisées pour entrainer le model\n"
-	donneesTestPretraitees = input(query)
-	donneesTestPretraitees = "dataForTestingPreprocessed/"+donneesTestPretraitees
+	print("\n")
+	os.system("ls ../naiveBayesModel/dataForTestingPreprocessed")
+	print("\n")
+	
+	#query += "/!\\ Les données doivent être au même format que celles utilisées pour entrainer le model\n"
+	donneesTestPretraitees = input("Choisissez le fichier de test prétraité ( en .arff): \n")
+	os.system("ls ../naiveBayesModel/dataForTestingPreprocessed")
+	donneesTestPretraitees = "../naiveBayesModel/dataForTestingPreprocessed/"+donneesTestPretraitees
 
 	#Si le fichier des données de test existe
 	if os.path.isfile(donneesTestPretraitees):
