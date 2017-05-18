@@ -4,3 +4,9 @@ nouveau rapport: https://fr.sharelatex.com/project/59191753beef0cec02f3c56e
 notice https://fr.sharelatex.com/project/59195f5bbeef0cec02f3d012
 
 Diapositives : https://fr.sharelatex.com/project/591ae9441248b0ab043861ef
+
+Groupe O :
+
+Jérémy Bressand : 20136326
+Anastasiia Prysiazhniuk : 20146695
+Tamara Rocacher : 20113888
